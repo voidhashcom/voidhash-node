@@ -13,3 +13,5 @@ export function createVoidhashFetchClient(secretKey: string, options?: CreateVoi
   });
   return fetchClient;
 }
+
+export type FetchClient = ReturnType<typeof createVoidhashFetchClient>;
