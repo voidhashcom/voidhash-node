@@ -7,6 +7,7 @@
     "type": "git",
     "url": "https://github.com/voidhashcom/voidhash-node"
   },
+  "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=8000 tsup --clean --dts",
     "dev": "cross-env NODE_OPTIONS='--max-old-space-size=4000' tsup --watch --sourcemap",
