@@ -13,7 +13,8 @@
     "dev": "cross-env NODE_OPTIONS='--max-old-space-size=4000' tsup --watch --sourcemap",
     "dev:dts": "cross-env NODE_OPTIONS='--max-old-space-size=16192' tsup --watch --dts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "generate-types": "npx openapi-typescript https://api.voidhash.com/openapi --output ./src/schema.d.ts"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -37,12 +38,15 @@
     }
   },
   "devDependencies": {
+    "openapi-typescript": "^7.6.1",
     "tsup": "^8.3.5",
     "typescript": "5.6.1-rc",
     "vitest": "^1.6.0"
   },
-  "dependencies": {},
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "openapi-fetch": "^0.13.5"
+  }
 }
