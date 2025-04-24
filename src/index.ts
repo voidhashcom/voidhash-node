@@ -1,6 +1,7 @@
 import { createClient } from "./client";
 import { CustomersAPI } from "./resources/customers";
 import { PaywallsAPI } from "./resources/paywalls";
+import { ProductsAPI } from "./resources/products";
 
 export * from "./errors";
 export * from "./gen/models";
@@ -24,5 +25,6 @@ export function createVoidhash(
 	return {
 		customers: new CustomersAPI(client),
 		paywalls: new PaywallsAPI(client),
+		products: new ProductsAPI(client),
 	};
 }

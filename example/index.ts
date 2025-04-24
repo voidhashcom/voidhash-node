@@ -5,7 +5,7 @@ if (!process.env.VOIDHASH_SECRET_KEY) {
 }
 
 const voidhash = createVoidhash(process.env.VOIDHASH_SECRET_KEY, {
-	debug: true,
+	debug: false,
 	apiUrl: "http://localhost:3000/api/v1",
 });
 

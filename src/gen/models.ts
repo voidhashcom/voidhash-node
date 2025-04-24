@@ -433,7 +433,7 @@ export type PostProductsByProductIdProviderProducts200 = {
 	/**
 	 * @type string
 	 */
-	providerProductId: string;
+	providerProductKey: string;
 	providerConfiguration:
 		| {
 				/**
@@ -537,7 +537,7 @@ export type GetProductsByProductIdProviderProducts200 = {
 	/**
 	 * @type string
 	 */
-	providerProductId: string;
+	providerProductKey: string;
 	providerConfiguration:
 		| {
 				/**
@@ -611,7 +611,7 @@ export type PutProductsByProductIdProviderProductsByProviderIdByProviderProductK
 		/**
 		 * @type string
 		 */
-		providerProductId: string;
+		providerProductKey: string;
 		providerConfiguration:
 			| {
 					/**

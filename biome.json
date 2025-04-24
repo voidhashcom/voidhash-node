@@ -21,10 +21,7 @@
 		"rules": {
 			"recommended": true
 		},
-		"ignore": [
-			"src/gen/**",
-			"dist/**"
-		]
+		"ignore": ["src/gen/**", "dist/**"]
 	},
 	"javascript": {
 		"formatter": {

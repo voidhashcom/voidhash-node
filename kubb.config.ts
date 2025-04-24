@@ -7,7 +7,7 @@ export default defineConfig(() => {
 	return {
 		root: ".",
 		input: {
-			path: "https://api.voidhash.com/v1/openapi",
+			path: "http://localhost:3000/api/v1/openapi",
 		},
 		hooks: {
 			done: [
