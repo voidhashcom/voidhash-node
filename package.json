@@ -14,7 +14,7 @@
     "dev:dts": "cross-env NODE_OPTIONS='--max-old-space-size=16192' tsup --watch --dts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "generate-types": "npx openapi-typescript https://api.voidhash.com/openapi --output ./src/schema.d.ts"
+    "generate": "kubb generate"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -38,18 +38,22 @@
     }
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@kubb/cli": "^3.10.0",
+    "@kubb/core": "^3.10.0",
+    "@kubb/plugin-client": "^3.10.0",
+    "@kubb/plugin-oas": "^3.10.0",
+    "@kubb/plugin-ts": "^3.10.0",
     "@openapitools/openapi-generator-cli": "^2.19.1",
     "@types/node": "^22.14.1",
     "cross-env": "^7.0.3",
     "openapi-typescript": "^7.6.1",
+    "react": "^19.1.0",
     "tsup": "^8.3.5",
     "typescript": "5.6.1-rc",
     "vitest": "^1.6.0"
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "openapi-fetch": "^0.13.5"
-  }
+  ]
 }

@@ -1,38 +1,28 @@
-import { createVoidhashFetchClient } from "./fetch";
+import { createClient } from "./client";
 import { CustomersAPI } from "./resources/customers";
+import { PaywallsAPI } from "./resources/paywalls";
+
+export * from "./errors";
+export * from "./gen/models";
 
 type CreateVoidhashOptions = {
-    apiUrl?: string;
-}
-export function createVoidhash(secretKey: string, options: CreateVoidhashOptions = {}) {
-    const fetchClient = createVoidhashFetchClient(secretKey, {
-        baseUrl: options.apiUrl,
-    });
+	apiUrl?: string;
+	debug?: boolean;
+};
+export function createVoidhash(
+	secretKey: string,
+	options: CreateVoidhashOptions = {},
+) {
+	const client = createClient({
+		baseUrl: options.apiUrl ?? "https://api.voidhash.com/v1",
+		headers: {
+			"x-secret-key": secretKey,
+		},
+		debug: options.debug,
+	});
 
-    return {
-        customers: new CustomersAPI(fetchClient),
-        // paywalls: {
-        //     list: async () => {
-        //         try {
-        //             const res = await fetchClient.GET("/v1/paywalls");
-        //             if (res.data) {
-        //                 return res.data;
-        //             }
-        //             if (res.error) {
-
-        //             }
-        //             return res.error;
-        //         } catch (error) {
-        //             console.error(error);
-        //             throw error;
-        //         }
-        //     },
-        //     create: async (body: { name: string }) => {
-        //         const res = await fetchClient.POST("/v1/paywalls", { body });
-        //         if (res.error) throw res.error;
-        //         return res.data;
-        //     },
-        // },
-        // Add more namespaces (products, customers, etc.) as needed
-    };
+	return {
+		customers: new CustomersAPI(client),
+		paywalls: new PaywallsAPI(client),
+	};
 }

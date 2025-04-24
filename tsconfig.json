@@ -18,7 +18,8 @@
 		"strict": true,
 		"noImplicitOverride": true,
 		"noFallthroughCasesInSwitch": true,
-		"downlevelIteration": true
+		"downlevelIteration": true,
+		"allowImportingTsExtensions": true
 	},
 	"exclude": ["**/dist", "node_modules"],
 	"references": [],
