@@ -1,7 +1,7 @@
 {
 	"name": "voidhash",
 	"packageManager": "pnpm@10.7.1",
-	"version": "0.0.1-alpha.1",
+	"version": "0.0.1-alpha.2",
 	"description": "Node SDK for voidhash",
 	"type": "module",
 	"repository": {
@@ -35,7 +35,9 @@
 	},
 	"typesVersions": {
 		"*": {
-			"*": ["./dist/index.d.ts"]
+			"*": [
+				"./dist/index.d.ts"
+			]
 		}
 	},
 	"devDependencies": {
@@ -52,5 +54,7 @@
 		"typescript": "5.6.1-rc",
 		"vitest": "^1.6.0"
 	},
-	"files": ["dist"]
+	"files": [
+		"dist"
+	]
 }
