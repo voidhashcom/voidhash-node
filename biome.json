@@ -14,14 +14,17 @@
 		"indentStyle": "tab"
 	},
 	"organizeImports": {
-		"enabled": true
+		"enabled": false
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true
 		},
-		"ignore": ["src/gen/**", "dist/**"]
+		"ignore": [
+			"src/gen/**",
+			"dist/**"
+		]
 	},
 	"javascript": {
 		"formatter": {
