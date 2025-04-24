@@ -1,4 +1,5 @@
 export { getCustomers } from "./customersController/getCustomers.ts";
+export { getCustomersByAppUserIdByAppUserId } from "./customersController/getCustomersByAppUserIdByAppUserId.ts";
 export { postCustomers } from "./customersController/postCustomers.ts";
 export { operations } from "./operations.ts";
 export { deletePaywallsByPaywallId } from "./paywallsController/deletePaywallsByPaywallId.ts";

@@ -12,6 +12,10 @@ export const operations = {
 		path: "/customers",
 		method: "get",
 	},
+	"getCustomersBy-app-user-idByAppUserId": {
+		path: "/customers/by-app-user-id/:appUserId",
+		method: "get",
+	},
 	postPaywalls: {
 		path: "/paywalls",
 		method: "post",

@@ -6,6 +6,10 @@ export type {
 	GetCustomers200,
 	GetCustomersQueryResponse,
 	GetCustomersQuery,
+	GetCustomersByAppUserIdByAppUserIdPathParams,
+	GetCustomersByAppUserIdByAppUserId200,
+	GetCustomersByAppUserIdByAppUserIdQueryResponse,
+	GetCustomersByAppUserIdByAppUserIdQuery,
 	PostPaywalls200,
 	PostPaywallsMutationRequest,
 	PostPaywallsMutationResponse,
@@ -74,6 +78,7 @@ export type {
 	DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutation,
 } from "./models.ts";
 export { getCustomers } from "./clients/customersController/getCustomers.ts";
+export { getCustomersByAppUserIdByAppUserId } from "./clients/customersController/getCustomersByAppUserIdByAppUserId.ts";
 export { postCustomers } from "./clients/customersController/postCustomers.ts";
 export { operations } from "./clients/operations.ts";
 export { deletePaywallsByPaywallId } from "./clients/paywallsController/deletePaywallsByPaywallId.ts";

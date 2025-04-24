@@ -2,8 +2,10 @@ import { BaseAPI } from "../base-api";
 import type { FetchClient } from "../client";
 import {
 	getCustomers,
+	getCustomersByAppUserIdByAppUserId,
 	postCustomers,
 	type GetCustomers200,
+	type GetCustomersByAppUserIdByAppUserId200,
 	type PostCustomers200,
 	type PostCustomersMutationRequest,
 } from "../gen";
@@ -32,5 +34,21 @@ export class CustomersAPI extends BaseAPI {
 	 */
 	async list(): Promise<GetCustomers200> {
 		return await this.call(getCustomers({ client: this.client }));
+	}
+
+	/**
+	 * Get a customer by ID
+	 * @param {string} customerId
+	 * @returns {Promise<GetCustomersByCustomerId200>}
+	 */
+	async getByAppUserId(
+		appUserId: string,
+	): Promise<GetCustomersByAppUserIdByAppUserId200> {
+		return await this.call(
+			getCustomersByAppUserIdByAppUserId(
+				{ appUserId },
+				{ client: this.client },
+			),
+		);
 	}
 }

@@ -19,6 +19,10 @@ export type PostCustomers200 = {
 	 * @type string
 	 */
 	email: string | null;
+	/**
+	 * @type string
+	 */
+	appUserId: string | null;
 };
 
 export type PostCustomersMutationRequest = {
@@ -30,6 +34,10 @@ export type PostCustomersMutationRequest = {
 	 * @type string | undefined
 	 */
 	name?: string;
+	/**
+	 * @type string | undefined
+	 */
+	appUserId?: string;
 };
 
 export type PostCustomersMutationResponse = PostCustomers200;
@@ -56,12 +64,54 @@ export type GetCustomers200 = {
 	 * @type string
 	 */
 	email: string | null;
+	/**
+	 * @type string
+	 */
+	appUserId: string | null;
 }[];
 
 export type GetCustomersQueryResponse = GetCustomers200;
 
 export type GetCustomersQuery = {
 	Response: GetCustomers200;
+	Errors: any;
+};
+
+export type GetCustomersByAppUserIdByAppUserIdPathParams = {
+	/**
+	 * @type string
+	 */
+	appUserId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type GetCustomersByAppUserIdByAppUserId200 = {
+	/**
+	 * @type string
+	 */
+	customerId: string;
+	/**
+	 * @type string
+	 */
+	name: string | null;
+	/**
+	 * @type string
+	 */
+	email: string | null;
+	/**
+	 * @type string
+	 */
+	appUserId: string | null;
+};
+
+export type GetCustomersByAppUserIdByAppUserIdQueryResponse =
+	GetCustomersByAppUserIdByAppUserId200;
+
+export type GetCustomersByAppUserIdByAppUserIdQuery = {
+	Response: GetCustomersByAppUserIdByAppUserId200;
+	PathParams: GetCustomersByAppUserIdByAppUserIdPathParams;
 	Errors: any;
 };
 
@@ -287,6 +337,10 @@ export type PostProducts200 = {
 	 * @type string
 	 */
 	email: string | null;
+	/**
+	 * @type string
+	 */
+	appUserId: string | null;
 };
 
 export type PostProductsMutationRequest = {
