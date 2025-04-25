@@ -18,6 +18,8 @@ export function createVoidhash(
 		baseUrl: options.apiUrl ?? "https://api.voidhash.com/v1",
 		headers: {
 			"x-secret-key": secretKey,
+			"Content-Type": "application/json",
+			Accept: "application/json",
 		},
 		debug: options.debug,
 	});
