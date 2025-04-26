@@ -3,10 +3,7 @@
  * Do not edit manually.
  */
 
-/**
- * @description Successful response
- */
-export type PostCustomers200 = {
+export type Customer = {
 	/**
 	 * @type string
 	 */
@@ -25,100 +22,301 @@ export type PostCustomers200 = {
 	appUserId: string | null;
 };
 
-export type PostCustomersMutationRequest = {
+export const errorCodeEnum = {
+	BAD_REQUEST: "BAD_REQUEST",
+} as const;
+
+export type ErrorCodeEnum = (typeof errorCodeEnum)[keyof typeof errorCodeEnum];
+
+export type ErrBadRequest = {
 	/**
-	 * @type string, email
+	 * @type object
 	 */
-	email: string;
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export const errorCodeEnum2 = {
+	UNAUTHORIZED: "UNAUTHORIZED",
+} as const;
+
+export type ErrorCodeEnum2 =
+	(typeof errorCodeEnum2)[keyof typeof errorCodeEnum2];
+
+export type ErrUnauthorized = {
+	/**
+	 * @type object
+	 */
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum2;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export const errorCodeEnum3 = {
+	FORBIDDEN: "FORBIDDEN",
+} as const;
+
+export type ErrorCodeEnum3 =
+	(typeof errorCodeEnum3)[keyof typeof errorCodeEnum3];
+
+export type ErrForbidden = {
+	/**
+	 * @type object
+	 */
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum3;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export const errorCodeEnum4 = {
+	NOT_FOUND: "NOT_FOUND",
+} as const;
+
+export type ErrorCodeEnum4 =
+	(typeof errorCodeEnum4)[keyof typeof errorCodeEnum4];
+
+export type ErrNotFound = {
+	/**
+	 * @type object
+	 */
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum4;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export const errorCodeEnum5 = {
+	CONFLICT: "CONFLICT",
+} as const;
+
+export type ErrorCodeEnum5 =
+	(typeof errorCodeEnum5)[keyof typeof errorCodeEnum5];
+
+export type ErrConflict = {
+	/**
+	 * @type object
+	 */
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum5;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export const errorCodeEnum6 = {
+	PRECONDITION_FAILED: "PRECONDITION_FAILED",
+} as const;
+
+export type ErrorCodeEnum6 =
+	(typeof errorCodeEnum6)[keyof typeof errorCodeEnum6];
+
+export type ErrPreconditionFailed = {
+	/**
+	 * @type object
+	 */
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum6;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export const errorCodeEnum7 = {
+	TOO_MANY_REQUESTS: "TOO_MANY_REQUESTS",
+} as const;
+
+export type ErrorCodeEnum7 =
+	(typeof errorCodeEnum7)[keyof typeof errorCodeEnum7];
+
+export type ErrTooManyRequests = {
+	/**
+	 * @type object
+	 */
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum7;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export const errorCodeEnum8 = {
+	INTERNAL_SERVER_ERROR: "INTERNAL_SERVER_ERROR",
+} as const;
+
+export type ErrorCodeEnum8 =
+	(typeof errorCodeEnum8)[keyof typeof errorCodeEnum8];
+
+export type ErrInternalServerError = {
+	/**
+	 * @type object
+	 */
+	error: {
+		/**
+		 * @description A machine readable error code.
+		 * @type string
+		 */
+		code: ErrorCodeEnum8;
+		/**
+		 * @description A link to our documentation with more details about this error code
+		 * @type string
+		 */
+		docs: string;
+		/**
+		 * @description A human readable explanation of what went wrong
+		 * @type string
+		 */
+		message: string;
+		/**
+		 * @description Please always include the requestId in your error report
+		 * @type string
+		 */
+		requestId: string;
+	};
+};
+
+export type CreateCustomerBody = {
+	/**
+	 * @type string | undefined
+	 */
+	appUserId?: string;
 	/**
 	 * @type string | undefined
 	 */
 	name?: string;
 	/**
-	 * @type string | undefined
+	 * @type string, email
 	 */
-	appUserId?: string;
+	email: string;
 };
 
-export type PostCustomersMutationResponse = PostCustomers200;
-
-export type PostCustomersMutation = {
-	Response: PostCustomers200;
-	Request: PostCustomersMutationRequest;
-	Errors: any;
-};
-
-/**
- * @description Successful response
- */
-export type GetCustomers200 = {
-	/**
-	 * @type string
-	 */
-	customerId: string;
-	/**
-	 * @type string
-	 */
-	name: string | null;
-	/**
-	 * @type string
-	 */
-	email: string | null;
-	/**
-	 * @type string
-	 */
-	appUserId: string | null;
-}[];
-
-export type GetCustomersQueryResponse = GetCustomers200;
-
-export type GetCustomersQuery = {
-	Response: GetCustomers200;
-	Errors: any;
-};
-
-export type GetCustomersByAppUserIdByAppUserIdPathParams = {
-	/**
-	 * @type string
-	 */
-	appUserId: string;
-};
-
-/**
- * @description Successful response
- */
-export type GetCustomersByAppUserIdByAppUserId200 = {
-	/**
-	 * @type string
-	 */
-	customerId: string;
-	/**
-	 * @type string
-	 */
-	name: string | null;
-	/**
-	 * @type string
-	 */
-	email: string | null;
-	/**
-	 * @type string
-	 */
-	appUserId: string | null;
-};
-
-export type GetCustomersByAppUserIdByAppUserIdQueryResponse =
-	GetCustomersByAppUserIdByAppUserId200;
-
-export type GetCustomersByAppUserIdByAppUserIdQuery = {
-	Response: GetCustomersByAppUserIdByAppUserId200;
-	PathParams: GetCustomersByAppUserIdByAppUserIdPathParams;
-	Errors: any;
-};
-
-/**
- * @description Successful response
- */
-export type PostPaywalls200 = {
+export type Paywall = {
 	/**
 	 * @type string
 	 */
@@ -129,108 +327,14 @@ export type PostPaywalls200 = {
 	name: string;
 };
 
-export type PostPaywallsMutationRequest = {
+export type CreatePaywallBody = {
 	/**
 	 * @type string
 	 */
 	name: string;
 };
 
-export type PostPaywallsMutationResponse = PostPaywalls200;
-
-export type PostPaywallsMutation = {
-	Response: PostPaywalls200;
-	Request: PostPaywallsMutationRequest;
-	Errors: any;
-};
-
-/**
- * @description Successful response
- */
-export type GetPaywalls200 = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-	/**
-	 * @type string
-	 */
-	name: string;
-}[];
-
-export type GetPaywallsQueryResponse = GetPaywalls200;
-
-export type GetPaywallsQuery = {
-	Response: GetPaywalls200;
-	Errors: any;
-};
-
-export type GetPaywallsByPaywallIdPathParams = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-};
-
-/**
- * @description Successful response
- */
-export type GetPaywallsByPaywallId200 = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-	/**
-	 * @type string
-	 */
-	name: string;
-};
-
-export type GetPaywallsByPaywallIdQueryResponse = GetPaywallsByPaywallId200;
-
-export type GetPaywallsByPaywallIdQuery = {
-	Response: GetPaywallsByPaywallId200;
-	PathParams: GetPaywallsByPaywallIdPathParams;
-	Errors: any;
-};
-
-export type DeletePaywallsByPaywallIdPathParams = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-};
-
-/**
- * @description Successful response
- */
-export type DeletePaywallsByPaywallId200 = {
-	/**
-	 * @type string
-	 */
-	message: string;
-};
-
-export type DeletePaywallsByPaywallIdMutationResponse =
-	DeletePaywallsByPaywallId200;
-
-export type DeletePaywallsByPaywallIdMutation = {
-	Response: DeletePaywallsByPaywallId200;
-	PathParams: DeletePaywallsByPaywallIdPathParams;
-	Errors: any;
-};
-
-export type PostPaywallsByPaywallIdProductsPathParams = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-};
-
-/**
- * @description Successful response
- */
-export type PostPaywallsByPaywallIdProducts200 = {
+export type PaywallProduct = {
 	/**
 	 * @type string
 	 */
@@ -245,105 +349,14 @@ export type PostPaywallsByPaywallIdProducts200 = {
 	productName: string | null;
 };
 
-export type PostPaywallsByPaywallIdProductsMutationRequest = {
+export type AttachProductToPaywallBody = {
 	/**
 	 * @type string
 	 */
 	productId: string;
 };
 
-export type PostPaywallsByPaywallIdProductsMutationResponse =
-	PostPaywallsByPaywallIdProducts200;
-
-export type PostPaywallsByPaywallIdProductsMutation = {
-	Response: PostPaywallsByPaywallIdProducts200;
-	Request: PostPaywallsByPaywallIdProductsMutationRequest;
-	PathParams: PostPaywallsByPaywallIdProductsPathParams;
-	Errors: any;
-};
-
-export type GetPaywallsByPaywallIdProductsPathParams = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-};
-
-/**
- * @description Successful response
- */
-export type GetPaywallsByPaywallIdProducts200 = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-	/**
-	 * @type string
-	 */
-	productId: string;
-	/**
-	 * @type string
-	 */
-	productName: string | null;
-}[];
-
-export type GetPaywallsByPaywallIdProductsQueryResponse =
-	GetPaywallsByPaywallIdProducts200;
-
-export type GetPaywallsByPaywallIdProductsQuery = {
-	Response: GetPaywallsByPaywallIdProducts200;
-	PathParams: GetPaywallsByPaywallIdProductsPathParams;
-	Errors: any;
-};
-
-export type DeletePaywallsByPaywallIdProductsByProductIdPathParams = {
-	/**
-	 * @type string
-	 */
-	paywallId: string;
-	/**
-	 * @type string
-	 */
-	productId: string;
-};
-
-/**
- * @description Successful response
- */
-export type DeletePaywallsByPaywallIdProductsByProductId200 = any;
-
-export type DeletePaywallsByPaywallIdProductsByProductIdMutationResponse =
-	DeletePaywallsByPaywallIdProductsByProductId200;
-
-export type DeletePaywallsByPaywallIdProductsByProductIdMutation = {
-	Response: DeletePaywallsByPaywallIdProductsByProductId200;
-	PathParams: DeletePaywallsByPaywallIdProductsByProductIdPathParams;
-	Errors: any;
-};
-
-/**
- * @description Successful response
- */
-export type PostProducts200 = {
-	/**
-	 * @type string
-	 */
-	customerId: string;
-	/**
-	 * @type string
-	 */
-	name: string | null;
-	/**
-	 * @type string
-	 */
-	email: string | null;
-	/**
-	 * @type string
-	 */
-	appUserId: string | null;
-};
-
-export type PostProductsMutationRequest = {
+export type CreateProductBody = {
 	/**
 	 * @minLength 3
 	 * @maxLength 32
@@ -352,46 +365,7 @@ export type PostProductsMutationRequest = {
 	name: string;
 };
 
-export type PostProductsMutationResponse = PostProducts200;
-
-export type PostProductsMutation = {
-	Response: PostProducts200;
-	Request: PostProductsMutationRequest;
-	Errors: any;
-};
-
-/**
- * @description Successful response
- */
-export type GetProducts200 = {
-	/**
-	 * @type string
-	 */
-	productId: string;
-	/**
-	 * @type string
-	 */
-	name: string;
-}[];
-
-export type GetProductsQueryResponse = GetProducts200;
-
-export type GetProductsQuery = {
-	Response: GetProducts200;
-	Errors: any;
-};
-
-export type GetProductsByProductIdPathParams = {
-	/**
-	 * @type string
-	 */
-	productId: string;
-};
-
-/**
- * @description Successful response
- */
-export type GetProductsByProductId200 = {
+export type Product = {
 	/**
 	 * @type string
 	 */
@@ -402,133 +376,22 @@ export type GetProductsByProductId200 = {
 	name: string;
 };
 
-export type GetProductsByProductIdQueryResponse = GetProductsByProductId200;
-
-export type GetProductsByProductIdQuery = {
-	Response: GetProductsByProductId200;
-	PathParams: GetProductsByProductIdPathParams;
-	Errors: any;
-};
-
-export type PutProductsByProductIdPathParams = {
-	/**
-	 * @type string
-	 */
-	productId: string;
-};
-
-/**
- * @description Successful response
- */
-export type PutProductsByProductId200 = {
-	/**
-	 * @type string
-	 */
-	productId: string;
+export type UpdateProductBody = {
 	/**
 	 * @type string
 	 */
 	name: string;
 };
 
-export type PutProductsByProductIdMutationRequest = {
-	/**
-	 * @type string
-	 */
-	name: string;
-};
-
-export type PutProductsByProductIdMutationResponse = PutProductsByProductId200;
-
-export type PutProductsByProductIdMutation = {
-	Response: PutProductsByProductId200;
-	Request: PutProductsByProductIdMutationRequest;
-	PathParams: PutProductsByProductIdPathParams;
-	Errors: any;
-};
-
-export type DeleteProductsByProductIdPathParams = {
-	/**
-	 * @type string
-	 */
-	productId: string;
-};
-
-/**
- * @description Successful response
- */
-export type DeleteProductsByProductId200 = {
-	/**
-	 * @type string
-	 */
-	message: string;
-};
-
-export type DeleteProductsByProductIdMutationResponse =
-	DeleteProductsByProductId200;
-
-export type DeleteProductsByProductIdMutation = {
-	Response: DeleteProductsByProductId200;
-	PathParams: DeleteProductsByProductIdPathParams;
-	Errors: any;
-};
-
-export type PostProductsByProductIdProviderProductsPathParams = {
-	/**
-	 * @type string
-	 */
-	productId: string;
-};
-
-/**
- * @description Successful response
- */
-export type PostProductsByProductIdProviderProducts200 = {
+export type ProviderProduct = {
 	/**
 	 * @type string
 	 */
 	providerProductKey: string;
-	providerConfiguration:
-		| {
-				/**
-				 * @type string
-				 */
-				providerId: "stripe";
-				/**
-				 * @type object
-				 */
-				configuration: {
-					/**
-					 * @minLength 1
-					 * @type string
-					 */
-					productId: string;
-					/**
-					 * @minLength 1
-					 * @type string
-					 */
-					priceId: string;
-				};
-		  }
-		| {
-				/**
-				 * @type string
-				 */
-				providerId: "app-store";
-				/**
-				 * @type object
-				 */
-				configuration: {
-					/**
-					 * @minLength 1
-					 * @type string
-					 */
-					productId: string;
-				};
-		  };
+	providerConfiguration: ProductProviderConfiguration;
 };
 
-export type PostProductsByProductIdProviderProductsMutationRequest =
+export type ProductProviderConfiguration =
 	| {
 			/**
 			 * @type string
@@ -567,17 +430,611 @@ export type PostProductsByProductIdProviderProductsMutationRequest =
 			};
 	  };
 
-export type PostProductsByProductIdProviderProductsMutationResponse =
-	PostProductsByProductIdProviderProducts200;
+export type AttachProviderProductBody = ProductProviderConfiguration;
 
-export type PostProductsByProductIdProviderProductsMutation = {
-	Response: PostProductsByProductIdProviderProducts200;
-	Request: PostProductsByProductIdProviderProductsMutationRequest;
-	PathParams: PostProductsByProductIdProviderProductsPathParams;
-	Errors: any;
+export type UpdateProviderProductBody = {
+	configuration: ProductProviderConfiguration;
 };
 
-export type GetProductsByProductIdProviderProductsPathParams = {
+/**
+ * @description Successful response
+ */
+export type CreateCustomer200 = Customer;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type CreateCustomer400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type CreateCustomer401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type CreateCustomer403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type CreateCustomer404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type CreateCustomer409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type CreateCustomer412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type CreateCustomer429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type CreateCustomer500 = ErrInternalServerError;
+
+export type CreateCustomerMutationRequest = CreateCustomerBody;
+
+export type CreateCustomerMutationResponse = CreateCustomer200;
+
+export type CreateCustomerMutation = {
+	Response: CreateCustomer200;
+	Request: CreateCustomerMutationRequest;
+	Errors:
+		| CreateCustomer400
+		| CreateCustomer401
+		| CreateCustomer403
+		| CreateCustomer404
+		| CreateCustomer409
+		| CreateCustomer412
+		| CreateCustomer429
+		| CreateCustomer500;
+};
+
+/**
+ * @description Successful response
+ */
+export type ListCustomers200 = Customer[];
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type ListCustomers400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type ListCustomers401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type ListCustomers403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type ListCustomers404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type ListCustomers409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type ListCustomers412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type ListCustomers429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type ListCustomers500 = ErrInternalServerError;
+
+export type ListCustomersQueryResponse = ListCustomers200;
+
+export type ListCustomersQuery = {
+	Response: ListCustomers200;
+	Errors:
+		| ListCustomers400
+		| ListCustomers401
+		| ListCustomers403
+		| ListCustomers404
+		| ListCustomers409
+		| ListCustomers412
+		| ListCustomers429
+		| ListCustomers500;
+};
+
+export type GetCustomerByAppUserIdPathParams = {
+	/**
+	 * @type string
+	 */
+	appUserId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type GetCustomerByAppUserId200 = Customer;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type GetCustomerByAppUserId400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type GetCustomerByAppUserId401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type GetCustomerByAppUserId403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type GetCustomerByAppUserId404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type GetCustomerByAppUserId409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type GetCustomerByAppUserId412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type GetCustomerByAppUserId429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type GetCustomerByAppUserId500 = ErrInternalServerError;
+
+export type GetCustomerByAppUserIdQueryResponse = GetCustomerByAppUserId200;
+
+export type GetCustomerByAppUserIdQuery = {
+	Response: GetCustomerByAppUserId200;
+	PathParams: GetCustomerByAppUserIdPathParams;
+	Errors:
+		| GetCustomerByAppUserId400
+		| GetCustomerByAppUserId401
+		| GetCustomerByAppUserId403
+		| GetCustomerByAppUserId404
+		| GetCustomerByAppUserId409
+		| GetCustomerByAppUserId412
+		| GetCustomerByAppUserId429
+		| GetCustomerByAppUserId500;
+};
+
+/**
+ * @description Successful response
+ */
+export type CreatePaywall200 = Paywall;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type CreatePaywall400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type CreatePaywall401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type CreatePaywall403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type CreatePaywall404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type CreatePaywall409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type CreatePaywall412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type CreatePaywall429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type CreatePaywall500 = ErrInternalServerError;
+
+export type CreatePaywallMutationRequest = CreatePaywallBody;
+
+export type CreatePaywallMutationResponse = CreatePaywall200;
+
+export type CreatePaywallMutation = {
+	Response: CreatePaywall200;
+	Request: CreatePaywallMutationRequest;
+	Errors:
+		| CreatePaywall400
+		| CreatePaywall401
+		| CreatePaywall403
+		| CreatePaywall404
+		| CreatePaywall409
+		| CreatePaywall412
+		| CreatePaywall429
+		| CreatePaywall500;
+};
+
+/**
+ * @description Successful response
+ */
+export type ListPaywalls200 = Paywall[];
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type ListPaywalls400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type ListPaywalls401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type ListPaywalls403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type ListPaywalls404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type ListPaywalls409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type ListPaywalls412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type ListPaywalls429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type ListPaywalls500 = ErrInternalServerError;
+
+export type ListPaywallsQueryResponse = ListPaywalls200;
+
+export type ListPaywallsQuery = {
+	Response: ListPaywalls200;
+	Errors:
+		| ListPaywalls400
+		| ListPaywalls401
+		| ListPaywalls403
+		| ListPaywalls404
+		| ListPaywalls409
+		| ListPaywalls412
+		| ListPaywalls429
+		| ListPaywalls500;
+};
+
+export type GetPaywallByIdPathParams = {
+	/**
+	 * @type string
+	 */
+	paywallId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type GetPaywallById200 = Paywall;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type GetPaywallById400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type GetPaywallById401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type GetPaywallById403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type GetPaywallById404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type GetPaywallById409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type GetPaywallById412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type GetPaywallById429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type GetPaywallById500 = ErrInternalServerError;
+
+export type GetPaywallByIdQueryResponse = GetPaywallById200;
+
+export type GetPaywallByIdQuery = {
+	Response: GetPaywallById200;
+	PathParams: GetPaywallByIdPathParams;
+	Errors:
+		| GetPaywallById400
+		| GetPaywallById401
+		| GetPaywallById403
+		| GetPaywallById404
+		| GetPaywallById409
+		| GetPaywallById412
+		| GetPaywallById429
+		| GetPaywallById500;
+};
+
+export type DeletePaywallPathParams = {
+	/**
+	 * @type string
+	 */
+	paywallId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type DeletePaywall200 = {
+	/**
+	 * @type string
+	 */
+	message: string;
+};
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type DeletePaywall400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type DeletePaywall401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type DeletePaywall403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type DeletePaywall404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type DeletePaywall409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type DeletePaywall412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type DeletePaywall429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type DeletePaywall500 = ErrInternalServerError;
+
+export type DeletePaywallMutationResponse = DeletePaywall200;
+
+export type DeletePaywallMutation = {
+	Response: DeletePaywall200;
+	PathParams: DeletePaywallPathParams;
+	Errors:
+		| DeletePaywall400
+		| DeletePaywall401
+		| DeletePaywall403
+		| DeletePaywall404
+		| DeletePaywall409
+		| DeletePaywall412
+		| DeletePaywall429
+		| DeletePaywall500;
+};
+
+export type AttachProductToPaywallPathParams = {
+	/**
+	 * @type string
+	 */
+	paywallId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type AttachProductToPaywall200 = PaywallProduct;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type AttachProductToPaywall400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type AttachProductToPaywall401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type AttachProductToPaywall403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type AttachProductToPaywall404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type AttachProductToPaywall409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type AttachProductToPaywall412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type AttachProductToPaywall429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type AttachProductToPaywall500 = ErrInternalServerError;
+
+export type AttachProductToPaywallMutationRequest = AttachProductToPaywallBody;
+
+export type AttachProductToPaywallMutationResponse = AttachProductToPaywall200;
+
+export type AttachProductToPaywallMutation = {
+	Response: AttachProductToPaywall200;
+	Request: AttachProductToPaywallMutationRequest;
+	PathParams: AttachProductToPaywallPathParams;
+	Errors:
+		| AttachProductToPaywall400
+		| AttachProductToPaywall401
+		| AttachProductToPaywall403
+		| AttachProductToPaywall404
+		| AttachProductToPaywall409
+		| AttachProductToPaywall412
+		| AttachProductToPaywall429
+		| AttachProductToPaywall500;
+};
+
+export type GetPaywallProductsPathParams = {
+	/**
+	 * @type string
+	 */
+	paywallId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type GetPaywallProducts200 = PaywallProduct[];
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type GetPaywallProducts400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type GetPaywallProducts401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type GetPaywallProducts403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type GetPaywallProducts404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type GetPaywallProducts409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type GetPaywallProducts412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type GetPaywallProducts429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type GetPaywallProducts500 = ErrInternalServerError;
+
+export type GetPaywallProductsQueryResponse = GetPaywallProducts200;
+
+export type GetPaywallProductsQuery = {
+	Response: GetPaywallProducts200;
+	PathParams: GetPaywallProductsPathParams;
+	Errors:
+		| GetPaywallProducts400
+		| GetPaywallProducts401
+		| GetPaywallProducts403
+		| GetPaywallProducts404
+		| GetPaywallProducts409
+		| GetPaywallProducts412
+		| GetPaywallProducts429
+		| GetPaywallProducts500;
+};
+
+export type DeletePaywallProductPathParams = {
+	/**
+	 * @type string
+	 */
+	paywallId: string;
 	/**
 	 * @type string
 	 */
@@ -587,206 +1044,690 @@ export type GetProductsByProductIdProviderProductsPathParams = {
 /**
  * @description Successful response
  */
-export type GetProductsByProductIdProviderProducts200 = {
+export type DeletePaywallProduct200 = any;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type DeletePaywallProduct400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type DeletePaywallProduct401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type DeletePaywallProduct403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type DeletePaywallProduct404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type DeletePaywallProduct409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type DeletePaywallProduct412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type DeletePaywallProduct429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type DeletePaywallProduct500 = ErrInternalServerError;
+
+export type DeletePaywallProductMutationResponse = DeletePaywallProduct200;
+
+export type DeletePaywallProductMutation = {
+	Response: DeletePaywallProduct200;
+	PathParams: DeletePaywallProductPathParams;
+	Errors:
+		| DeletePaywallProduct400
+		| DeletePaywallProduct401
+		| DeletePaywallProduct403
+		| DeletePaywallProduct404
+		| DeletePaywallProduct409
+		| DeletePaywallProduct412
+		| DeletePaywallProduct429
+		| DeletePaywallProduct500;
+};
+
+/**
+ * @description Successful response
+ */
+export type CreateProduct200 = Customer;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type CreateProduct400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type CreateProduct401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type CreateProduct403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type CreateProduct404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type CreateProduct409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type CreateProduct412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type CreateProduct429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type CreateProduct500 = ErrInternalServerError;
+
+export type CreateProductMutationRequest = CreateProductBody;
+
+export type CreateProductMutationResponse = CreateProduct200;
+
+export type CreateProductMutation = {
+	Response: CreateProduct200;
+	Request: CreateProductMutationRequest;
+	Errors:
+		| CreateProduct400
+		| CreateProduct401
+		| CreateProduct403
+		| CreateProduct404
+		| CreateProduct409
+		| CreateProduct412
+		| CreateProduct429
+		| CreateProduct500;
+};
+
+/**
+ * @description Successful response
+ */
+export type ListProducts200 = Product[];
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type ListProducts400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type ListProducts401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type ListProducts403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type ListProducts404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type ListProducts409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type ListProducts412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type ListProducts429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type ListProducts500 = ErrInternalServerError;
+
+export type ListProductsQueryResponse = ListProducts200;
+
+export type ListProductsQuery = {
+	Response: ListProducts200;
+	Errors:
+		| ListProducts400
+		| ListProducts401
+		| ListProducts403
+		| ListProducts404
+		| ListProducts409
+		| ListProducts412
+		| ListProducts429
+		| ListProducts500;
+};
+
+export type GetProductByIdPathParams = {
+	/**
+	 * @type string
+	 */
+	productId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type GetProductById200 = Product;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type GetProductById400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type GetProductById401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type GetProductById403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type GetProductById404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type GetProductById409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type GetProductById412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type GetProductById429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type GetProductById500 = ErrInternalServerError;
+
+export type GetProductByIdQueryResponse = GetProductById200;
+
+export type GetProductByIdQuery = {
+	Response: GetProductById200;
+	PathParams: GetProductByIdPathParams;
+	Errors:
+		| GetProductById400
+		| GetProductById401
+		| GetProductById403
+		| GetProductById404
+		| GetProductById409
+		| GetProductById412
+		| GetProductById429
+		| GetProductById500;
+};
+
+export type UpdateProductPathParams = {
+	/**
+	 * @type string
+	 */
+	productId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type UpdateProduct200 = Product;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type UpdateProduct400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type UpdateProduct401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type UpdateProduct403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type UpdateProduct404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type UpdateProduct409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type UpdateProduct412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type UpdateProduct429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type UpdateProduct500 = ErrInternalServerError;
+
+export type UpdateProductMutationRequest = UpdateProductBody;
+
+export type UpdateProductMutationResponse = UpdateProduct200;
+
+export type UpdateProductMutation = {
+	Response: UpdateProduct200;
+	Request: UpdateProductMutationRequest;
+	PathParams: UpdateProductPathParams;
+	Errors:
+		| UpdateProduct400
+		| UpdateProduct401
+		| UpdateProduct403
+		| UpdateProduct404
+		| UpdateProduct409
+		| UpdateProduct412
+		| UpdateProduct429
+		| UpdateProduct500;
+};
+
+export type DeleteProductPathParams = {
+	/**
+	 * @type string
+	 */
+	productId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type DeleteProduct200 = {
+	/**
+	 * @type string
+	 */
+	message: string;
+};
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type DeleteProduct400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type DeleteProduct401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type DeleteProduct403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type DeleteProduct404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type DeleteProduct409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type DeleteProduct412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type DeleteProduct429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type DeleteProduct500 = ErrInternalServerError;
+
+export type DeleteProductMutationResponse = DeleteProduct200;
+
+export type DeleteProductMutation = {
+	Response: DeleteProduct200;
+	PathParams: DeleteProductPathParams;
+	Errors:
+		| DeleteProduct400
+		| DeleteProduct401
+		| DeleteProduct403
+		| DeleteProduct404
+		| DeleteProduct409
+		| DeleteProduct412
+		| DeleteProduct429
+		| DeleteProduct500;
+};
+
+export type AttachProviderProductPathParams = {
+	/**
+	 * @type string
+	 */
+	productId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type AttachProviderProduct200 = ProviderProduct;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type AttachProviderProduct400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type AttachProviderProduct401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type AttachProviderProduct403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type AttachProviderProduct404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type AttachProviderProduct409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type AttachProviderProduct412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type AttachProviderProduct429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type AttachProviderProduct500 = ErrInternalServerError;
+
+export type AttachProviderProductMutationRequest = AttachProviderProductBody;
+
+export type AttachProviderProductMutationResponse = AttachProviderProduct200;
+
+export type AttachProviderProductMutation = {
+	Response: AttachProviderProduct200;
+	Request: AttachProviderProductMutationRequest;
+	PathParams: AttachProviderProductPathParams;
+	Errors:
+		| AttachProviderProduct400
+		| AttachProviderProduct401
+		| AttachProviderProduct403
+		| AttachProviderProduct404
+		| AttachProviderProduct409
+		| AttachProviderProduct412
+		| AttachProviderProduct429
+		| AttachProviderProduct500;
+};
+
+export type GetProviderProductsByProductIdPathParams = {
+	/**
+	 * @type string
+	 */
+	productId: string;
+};
+
+/**
+ * @description Successful response
+ */
+export type GetProviderProductsByProductId200 = ProviderProduct[];
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type GetProviderProductsByProductId400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type GetProviderProductsByProductId401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type GetProviderProductsByProductId403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type GetProviderProductsByProductId404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type GetProviderProductsByProductId409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type GetProviderProductsByProductId412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type GetProviderProductsByProductId429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type GetProviderProductsByProductId500 = ErrInternalServerError;
+
+export type GetProviderProductsByProductIdQueryResponse =
+	GetProviderProductsByProductId200;
+
+export type GetProviderProductsByProductIdQuery = {
+	Response: GetProviderProductsByProductId200;
+	PathParams: GetProviderProductsByProductIdPathParams;
+	Errors:
+		| GetProviderProductsByProductId400
+		| GetProviderProductsByProductId401
+		| GetProviderProductsByProductId403
+		| GetProviderProductsByProductId404
+		| GetProviderProductsByProductId409
+		| GetProviderProductsByProductId412
+		| GetProviderProductsByProductId429
+		| GetProviderProductsByProductId500;
+};
+
+export type UpdateProviderProductPathParams = {
+	/**
+	 * @type string
+	 */
+	productId: string;
+	/**
+	 * @type string
+	 */
+	providerId: string;
 	/**
 	 * @type string
 	 */
 	providerProductKey: string;
-	providerConfiguration:
-		| {
-				/**
-				 * @type string
-				 */
-				providerId: "stripe";
-				/**
-				 * @type object
-				 */
-				configuration: {
-					/**
-					 * @minLength 1
-					 * @type string
-					 */
-					productId: string;
-					/**
-					 * @minLength 1
-					 * @type string
-					 */
-					priceId: string;
-				};
-		  }
-		| {
-				/**
-				 * @type string
-				 */
-				providerId: "app-store";
-				/**
-				 * @type object
-				 */
-				configuration: {
-					/**
-					 * @minLength 1
-					 * @type string
-					 */
-					productId: string;
-				};
-		  };
-}[];
-
-export type GetProductsByProductIdProviderProductsQueryResponse =
-	GetProductsByProductIdProviderProducts200;
-
-export type GetProductsByProductIdProviderProductsQuery = {
-	Response: GetProductsByProductIdProviderProducts200;
-	PathParams: GetProductsByProductIdProviderProductsPathParams;
-	Errors: any;
 };
 
-export type PutProductsByProductIdProviderProductsByProviderIdByProviderProductKeyPathParams =
-	{
-		/**
-		 * @type string
-		 */
-		productId: string;
-		/**
-		 * @type string
-		 */
-		providerId: string;
-		/**
-		 * @type string
-		 */
-		providerProductKey: string;
-	};
+/**
+ * @description Successful response
+ */
+export type UpdateProviderProduct200 = ProviderProduct;
+
+/**
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+ */
+export type UpdateProviderProduct400 = ErrBadRequest;
+
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type UpdateProviderProduct401 = ErrUnauthorized;
+
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type UpdateProviderProduct403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type UpdateProviderProduct404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type UpdateProviderProduct409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type UpdateProviderProduct412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type UpdateProviderProduct429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type UpdateProviderProduct500 = ErrInternalServerError;
+
+export type UpdateProviderProductMutationRequest = UpdateProviderProductBody;
+
+export type UpdateProviderProductMutationResponse = UpdateProviderProduct200;
+
+export type UpdateProviderProductMutation = {
+	Response: UpdateProviderProduct200;
+	Request: UpdateProviderProductMutationRequest;
+	PathParams: UpdateProviderProductPathParams;
+	Errors:
+		| UpdateProviderProduct400
+		| UpdateProviderProduct401
+		| UpdateProviderProduct403
+		| UpdateProviderProduct404
+		| UpdateProviderProduct409
+		| UpdateProviderProduct412
+		| UpdateProviderProduct429
+		| UpdateProviderProduct500;
+};
+
+export type DeleteProviderProductPathParams = {
+	/**
+	 * @type string
+	 */
+	productId: string;
+	/**
+	 * @type string
+	 */
+	providerId: string;
+	/**
+	 * @type string
+	 */
+	providerProductKey: string;
+};
 
 /**
  * @description Successful response
  */
-export type PutProductsByProductIdProviderProductsByProviderIdByProviderProductKey200 =
-	{
-		/**
-		 * @type string
-		 */
-		providerProductKey: string;
-		providerConfiguration:
-			| {
-					/**
-					 * @type string
-					 */
-					providerId: "stripe";
-					/**
-					 * @type object
-					 */
-					configuration: {
-						/**
-						 * @minLength 1
-						 * @type string
-						 */
-						productId: string;
-						/**
-						 * @minLength 1
-						 * @type string
-						 */
-						priceId: string;
-					};
-			  }
-			| {
-					/**
-					 * @type string
-					 */
-					providerId: "app-store";
-					/**
-					 * @type object
-					 */
-					configuration: {
-						/**
-						 * @minLength 1
-						 * @type string
-						 */
-						productId: string;
-					};
-			  };
-	};
-
-export type PutProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutationRequest =
-	{
-		configuration:
-			| {
-					/**
-					 * @type string
-					 */
-					providerId: "stripe";
-					/**
-					 * @type object
-					 */
-					configuration: {
-						/**
-						 * @minLength 1
-						 * @type string
-						 */
-						productId: string;
-						/**
-						 * @minLength 1
-						 * @type string
-						 */
-						priceId: string;
-					};
-			  }
-			| {
-					/**
-					 * @type string
-					 */
-					providerId: "app-store";
-					/**
-					 * @type object
-					 */
-					configuration: {
-						/**
-						 * @minLength 1
-						 * @type string
-						 */
-						productId: string;
-					};
-			  };
-	};
-
-export type PutProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutationResponse =
-	PutProductsByProductIdProviderProductsByProviderIdByProviderProductKey200;
-
-export type PutProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutation =
-	{
-		Response: PutProductsByProductIdProviderProductsByProviderIdByProviderProductKey200;
-		Request: PutProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutationRequest;
-		PathParams: PutProductsByProductIdProviderProductsByProviderIdByProviderProductKeyPathParams;
-		Errors: any;
-	};
-
-export type DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKeyPathParams =
-	{
-		/**
-		 * @type string
-		 */
-		productId: string;
-		/**
-		 * @type string
-		 */
-		providerId: string;
-		/**
-		 * @type string
-		 */
-		providerProductKey: string;
-	};
+export type DeleteProviderProduct200 = any;
 
 /**
- * @description Successful response
+ * @description The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
  */
-export type DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey200 =
-	any;
+export type DeleteProviderProduct400 = ErrBadRequest;
 
-export type DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutationResponse =
-	DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey200;
+/**
+ * @description Although the HTTP standard specifies \"unauthorized\", semantically this response means \"unauthenticated\". That is, the client must authenticate itself to get the requested response.
+ */
+export type DeleteProviderProduct401 = ErrUnauthorized;
 
-export type DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutation =
-	{
-		Response: DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey200;
-		PathParams: DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKeyPathParams;
-		Errors: any;
-	};
+/**
+ * @description The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401 Unauthorized, the client\'s identity is known to the server.
+ */
+export type DeleteProviderProduct403 = ErrForbidden;
+
+/**
+ * @description The server cannot find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 Forbidden to hide the existence of a resource from an unauthorized client. This response code is probably the most well known due to its frequent occurrence on the web.
+ */
+export type DeleteProviderProduct404 = ErrNotFound;
+
+/**
+ * @description This response is sent when a request conflicts with the current state of the server.
+ */
+export type DeleteProviderProduct409 = ErrConflict;
+
+/**
+ * @description The requested operation cannot be completed because certain conditions were not met. This typically occurs when a required resource state or version check fails.
+ */
+export type DeleteProviderProduct412 = ErrPreconditionFailed;
+
+/**
+ * @description The user has sent too many requests in a given amount of time (\"rate limiting\")
+ */
+export type DeleteProviderProduct429 = ErrTooManyRequests;
+
+/**
+ * @description The server has encountered a situation it does not know how to handle.
+ */
+export type DeleteProviderProduct500 = ErrInternalServerError;
+
+export type DeleteProviderProductMutationResponse = DeleteProviderProduct200;
+
+export type DeleteProviderProductMutation = {
+	Response: DeleteProviderProduct200;
+	PathParams: DeleteProviderProductPathParams;
+	Errors:
+		| DeleteProviderProduct400
+		| DeleteProviderProduct401
+		| DeleteProviderProduct403
+		| DeleteProviderProduct404
+		| DeleteProviderProduct409
+		| DeleteProviderProduct412
+		| DeleteProviderProduct429
+		| DeleteProviderProduct500;
+};

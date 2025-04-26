@@ -1,0 +1,9 @@
+{
+	"type": "object",
+	"properties": {
+		"paywallId": { "type": "string" },
+		"name": { "type": "string" }
+	},
+	"required": ["paywallId", "name"],
+	"x-readme-ref-name": "Paywall"
+}

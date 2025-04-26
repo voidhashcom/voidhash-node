@@ -4,81 +4,80 @@
  */
 
 export const operations = {
-	postCustomers: {
+	createCustomer: {
 		path: "/customers",
 		method: "post",
 	},
-	getCustomers: {
+	listCustomers: {
 		path: "/customers",
 		method: "get",
 	},
-	"getCustomersBy-app-user-idByAppUserId": {
+	getCustomerByAppUserId: {
 		path: "/customers/by-app-user-id/:appUserId",
 		method: "get",
 	},
-	postPaywalls: {
+	createPaywall: {
 		path: "/paywalls",
 		method: "post",
 	},
-	getPaywalls: {
+	listPaywalls: {
 		path: "/paywalls",
 		method: "get",
 	},
-	getPaywallsByPaywallId: {
+	getPaywallById: {
 		path: "/paywalls/:paywallId",
 		method: "get",
 	},
-	deletePaywallsByPaywallId: {
+	deletePaywall: {
 		path: "/paywalls/:paywallId",
 		method: "delete",
 	},
-	postPaywallsByPaywallIdProducts: {
+	attachProductToPaywall: {
 		path: "/paywalls/:paywallId/products",
 		method: "post",
 	},
-	getPaywallsByPaywallIdProducts: {
+	getPaywallProducts: {
 		path: "/paywalls/:paywallId/products",
 		method: "get",
 	},
-	deletePaywallsByPaywallIdProductsByProductId: {
+	deletePaywallProduct: {
 		path: "/paywalls/:paywallId/products/:productId",
 		method: "delete",
 	},
-	postProducts: {
+	createProduct: {
 		path: "/products",
 		method: "post",
 	},
-	getProducts: {
+	listProducts: {
 		path: "/products",
 		method: "get",
 	},
-	getProductsByProductId: {
+	getProductById: {
 		path: "/products/:productId",
 		method: "get",
 	},
-	putProductsByProductId: {
+	updateProduct: {
 		path: "/products/:productId",
 		method: "put",
 	},
-	deleteProductsByProductId: {
+	deleteProduct: {
 		path: "/products/:productId",
 		method: "delete",
 	},
-	"postProductsByProductIdProvider-products": {
+	attachProviderProduct: {
 		path: "/products/:productId/provider-products",
 		method: "post",
 	},
-	"getProductsByProductIdProvider-products": {
+	getProviderProductsByProductId: {
 		path: "/products/:productId/provider-products",
 		method: "get",
 	},
-	"putProductsByProductIdProvider-productsByProviderIdByProviderProductKey": {
+	updateProviderProduct: {
 		path: "/products/:productId/provider-products/:providerId/:providerProductKey",
 		method: "put",
 	},
-	"deleteProductsByProductIdProvider-productsByProviderIdByProviderProductKey":
-		{
-			path: "/products/:productId/provider-products/:providerId/:providerProductKey",
-			method: "delete",
-		},
+	deleteProviderProduct: {
+		path: "/products/:productId/provider-products/:providerId/:providerProductKey",
+		method: "delete",
+	},
 } as const;

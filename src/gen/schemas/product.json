@@ -1,0 +1,9 @@
+{
+	"type": "object",
+	"properties": {
+		"productId": { "type": "string" },
+		"name": { "type": "string" }
+	},
+	"required": ["productId", "name"],
+	"x-readme-ref-name": "Product"
+}

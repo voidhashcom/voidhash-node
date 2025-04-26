@@ -1,0 +1,42 @@
+{
+	"type": "object",
+	"properties": {
+		"providerProductKey": { "type": "string" },
+		"providerConfiguration": {
+			"oneOf": [
+				{
+					"type": "object",
+					"properties": {
+						"providerId": { "type": "string", "const": "stripe" },
+						"configuration": {
+							"type": "object",
+							"properties": {
+								"productId": { "type": "string", "minLength": 1 },
+								"priceId": { "type": "string", "minLength": 1 }
+							},
+							"required": ["productId", "priceId"]
+						}
+					},
+					"required": ["providerId", "configuration"]
+				},
+				{
+					"type": "object",
+					"properties": {
+						"providerId": { "type": "string", "const": "app-store" },
+						"configuration": {
+							"type": "object",
+							"properties": {
+								"productId": { "type": "string", "minLength": 1 }
+							},
+							"required": ["productId"]
+						}
+					},
+					"required": ["providerId", "configuration"]
+				}
+			],
+			"x-readme-ref-name": "ProductProviderConfiguration"
+		}
+	},
+	"required": ["providerProductKey", "providerConfiguration"],
+	"x-readme-ref-name": "ProviderProduct"
+}

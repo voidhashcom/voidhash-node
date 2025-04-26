@@ -1,44 +1,44 @@
 import { BaseAPI } from "../base-api";
 import type { FetchClient } from "../client";
 import {
-	getProducts,
-	postProducts,
-	getProductsByProductId,
-	putProductsByProductId,
-	deleteProductsByProductId,
-	postProductsByProductIdProviderProducts,
-	getProductsByProductIdProviderProducts,
-	putProductsByProductIdProviderProductsByProviderIdByProviderProductKey,
-	deleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey,
-	type GetProducts200,
-	type PostProducts200,
-	type PostProductsMutationRequest,
-	type GetProductsByProductId200,
-	type PutProductsByProductId200,
-	type PutProductsByProductIdMutationRequest,
-	type DeleteProductsByProductId200,
-	type PostProductsByProductIdProviderProducts200,
-	type PostProductsByProductIdProviderProductsMutationRequest,
-	type GetProductsByProductIdProviderProducts200,
-	type PutProductsByProductIdProviderProductsByProviderIdByProviderProductKey200,
-	type PutProductsByProductIdProviderProductsByProviderIdByProviderProductKeyMutationRequest,
-	type DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey200,
+	listProducts,
+	createProduct,
+	getProductById,
+	updateProduct,
+	deleteProduct,
+	attachProviderProduct,
+	getProviderProductsByProductId,
+	updateProviderProduct,
+	deleteProviderProduct,
+	type ListProducts200,
+	type CreateProduct200,
+	type CreateProductMutationRequest,
+	type GetProductById200,
+	type UpdateProduct200,
+	type UpdateProductMutationRequest,
+	type DeleteProduct200,
+	type AttachProviderProduct200,
+	type AttachProviderProductMutationRequest,
+	type GetProviderProductsByProductId200,
+	type UpdateProviderProduct200,
+	type UpdateProviderProductMutationRequest,
+	type DeleteProviderProduct200,
 } from "../gen";
 
 export interface AttachProviderProductOptions {
 	productId: string;
-	providerProduct: PostProductsByProductIdProviderProductsMutationRequest;
+	providerProduct: AttachProviderProductMutationRequest;
 }
 
 export interface UpdateProviderProductOptions {
 	productId: string;
 	providerProductKey: string;
-	providerProduct: PostProductsByProductIdProviderProductsMutationRequest;
+	providerProduct: UpdateProviderProductMutationRequest;
 }
 
 export interface DeleteProviderProductOptions {
 	productId: string;
-	providerId: PostProductsByProductIdProviderProductsMutationRequest["providerId"];
+	providerId: string;
 	providerProductKey: string;
 }
 
@@ -51,44 +51,46 @@ export class ProductsAPI extends BaseAPI {
 
 	/**
 	 * Create a new product
-	 * @param {PostProductsMutationRequest} product
-	 * @returns {Promise<PostProducts200>}
+	 * @param {CreateProductMutationRequest} product
+	 * @returns {Promise<CreateProduct200>}
 	 */
-	async create(product: PostProductsMutationRequest): Promise<PostProducts200> {
-		return await this.call(postProducts(product, { client: this.client }));
+	async create(
+		product: CreateProductMutationRequest,
+	): Promise<CreateProduct200> {
+		return await this.call(createProduct(product, { client: this.client }));
 	}
 
 	/**
 	 * List all products
-	 * @returns {Promise<GetProducts200>}
+	 * @returns {Promise<ListProducts200>}
 	 */
-	async list(): Promise<GetProducts200> {
-		return await this.call(getProducts({ client: this.client }));
+	async list(): Promise<ListProducts200> {
+		return await this.call(listProducts({ client: this.client }));
 	}
 
 	/**
 	 * Get a product by ID
 	 * @param {string} id
-	 * @returns {Promise<GetProductsByProductId200>}
+	 * @returns {Promise<GetProductById200>}
 	 */
-	async get(id: string): Promise<GetProductsByProductId200> {
+	async get(id: string): Promise<GetProductById200> {
 		return await this.call(
-			getProductsByProductId({ productId: id }, { client: this.client }),
+			getProductById({ productId: id }, { client: this.client }),
 		);
 	}
 
 	/**
 	 * Update a product by ID
 	 * @param {string} id
-	 * @param {PutProductsByProductIdMutationRequest} product
-	 * @returns {Promise<PutProductsByProductId200>}
+	 * @param {UpdateProductMutationRequest} product
+	 * @returns {Promise<UpdateProduct200>}
 	 */
 	async update(
 		id: string,
-		product: PutProductsByProductIdMutationRequest,
-	): Promise<PutProductsByProductId200> {
+		product: UpdateProductMutationRequest,
+	): Promise<UpdateProduct200> {
 		return await this.call(
-			putProductsByProductId({ productId: id }, product, {
+			updateProduct({ productId: id }, product, {
 				client: this.client,
 			}),
 		);
@@ -97,44 +99,40 @@ export class ProductsAPI extends BaseAPI {
 	/**
 	 * Delete a product by ID
 	 * @param {string} id
-	 * @returns {Promise<DeleteProductsByProductId200>}
+	 * @returns {Promise<DeleteProduct200>}
 	 */
-	async delete(id: string): Promise<DeleteProductsByProductId200> {
+	async delete(id: string): Promise<DeleteProduct200> {
 		return await this.call(
-			deleteProductsByProductId({ productId: id }, { client: this.client }),
+			deleteProduct({ productId: id }, { client: this.client }),
 		);
 	}
 
 	/**
 	 * Attach a provider product to a product
 	 * @param {AttachProviderProductOptions} options
-	 * @returns {Promise<PostProductsByProductIdProviderProducts200>}
+	 * @returns {Promise<AttachProviderProduct200>}
 	 */
 	async attachProviderProduct(
 		options: AttachProviderProductOptions,
-	): Promise<PostProductsByProductIdProviderProducts200> {
-		const { productId, providerProduct } = options; // Destructure to separate productId from the request body
+	): Promise<AttachProviderProduct200> {
+		const { productId, providerProduct } = options;
 		return await this.call(
-			postProductsByProductIdProviderProducts(
-				{ productId: productId },
-				providerProduct,
-				{
-					client: this.client,
-				},
-			),
+			attachProviderProduct({ productId: productId }, providerProduct, {
+				client: this.client,
+			}),
 		);
 	}
 
 	/**
 	 * List provider products attached to a product
 	 * @param {string} productId
-	 * @returns {Promise<GetProductsByProductIdProviderProducts200>}
+	 * @returns {Promise<GetProviderProductsByProductId200>}
 	 */
 	async listProviderProducts(
 		productId: string,
-	): Promise<GetProductsByProductIdProviderProducts200> {
+	): Promise<GetProviderProductsByProductId200> {
 		return await this.call(
-			getProductsByProductIdProviderProducts(
+			getProviderProductsByProductId(
 				{ productId: productId },
 				{ client: this.client },
 			),
@@ -144,22 +142,20 @@ export class ProductsAPI extends BaseAPI {
 	/**
 	 * Update a provider product attached to a product
 	 * @param {UpdateProviderProductOptions} options
-	 * @returns {Promise<PutProductsByProductIdProviderProductsByProviderIdByProviderProductKey200>}
+	 * @returns {Promise<UpdateProviderProduct200>}
 	 */
 	async updateProviderProduct(
 		options: UpdateProviderProductOptions,
-	): Promise<PutProductsByProductIdProviderProductsByProviderIdByProviderProductKey200> {
+	): Promise<UpdateProviderProduct200> {
 		const { productId, providerProductKey, providerProduct } = options;
 		return await this.call(
-			putProductsByProductIdProviderProductsByProviderIdByProviderProductKey(
+			updateProviderProduct(
 				{
 					productId,
-					providerId: providerProduct.providerId,
+					providerId: providerProduct.configuration.providerId,
 					providerProductKey,
 				},
-				{
-					configuration: providerProduct,
-				}, // Cast needed after destructuring
+				providerProduct,
 				{ client: this.client },
 			),
 		);
@@ -168,14 +164,14 @@ export class ProductsAPI extends BaseAPI {
 	/**
 	 * Delete a provider product attached to a product
 	 * @param {DeleteProviderProductOptions} options
-	 * @returns {Promise<DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey200>}
+	 * @returns {Promise<DeleteProviderProduct200>}
 	 */
 	async deleteProviderProduct(
 		options: DeleteProviderProductOptions,
-	): Promise<DeleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey200> {
+	): Promise<DeleteProviderProduct200> {
 		const { productId, providerId, providerProductKey } = options;
 		return await this.call(
-			deleteProductsByProductIdProviderProductsByProviderIdByProviderProductKey(
+			deleteProviderProduct(
 				{
 					productId: productId,
 					providerId: providerId,

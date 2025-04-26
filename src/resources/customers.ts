@@ -1,13 +1,13 @@
 import { BaseAPI } from "../base-api";
 import type { FetchClient } from "../client";
 import {
-	getCustomers,
-	getCustomersByAppUserIdByAppUserId,
-	postCustomers,
-	type GetCustomers200,
-	type GetCustomersByAppUserIdByAppUserId200,
-	type PostCustomers200,
-	type PostCustomersMutationRequest,
+	listCustomers,
+	getCustomerByAppUserId,
+	createCustomer,
+	type ListCustomers200,
+	type GetCustomerByAppUserId200,
+	type CreateCustomer200,
+	type CreateCustomerMutationRequest,
 } from "../gen";
 
 export class CustomersAPI extends BaseAPI {
@@ -20,35 +20,30 @@ export class CustomersAPI extends BaseAPI {
 	/**
 	 * Create a new customer
 	 * @param {CreateCustomer} customer
-	 * @returns {Promise<PostCustomers200>}
+	 * @returns {Promise<CreateCustomer200>}
 	 */
 	async create(
-		customer: PostCustomersMutationRequest,
-	): Promise<PostCustomers200> {
-		return await this.call(postCustomers(customer, { client: this.client }));
+		customer: CreateCustomerMutationRequest,
+	): Promise<CreateCustomer200> {
+		return await this.call(createCustomer(customer, { client: this.client }));
 	}
 
 	/**
 	 * List all customers
-	 * @returns {Promise<GetCustomers200>}
+	 * @returns {Promise<ListCustomers200>}
 	 */
-	async list(): Promise<GetCustomers200> {
-		return await this.call(getCustomers({ client: this.client }));
+	async list(): Promise<ListCustomers200> {
+		return await this.call(listCustomers({ client: this.client }));
 	}
 
 	/**
-	 * Get a customer by ID
-	 * @param {string} customerId
-	 * @returns {Promise<GetCustomersByCustomerId200>}
+	 * Get a customer by App User ID
+	 * @param {string} appUserId
+	 * @returns {Promise<GetCustomerByAppUserId200>}
 	 */
-	async getByAppUserId(
-		appUserId: string,
-	): Promise<GetCustomersByAppUserIdByAppUserId200> {
+	async getByAppUserId(appUserId: string): Promise<GetCustomerByAppUserId200> {
 		return await this.call(
-			getCustomersByAppUserIdByAppUserId(
-				{ appUserId },
-				{ client: this.client },
-			),
+			getCustomerByAppUserId({ appUserId }, { client: this.client }),
 		);
 	}
 }

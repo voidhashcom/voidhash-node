@@ -35,14 +35,12 @@
 	},
 	"typesVersions": {
 		"*": {
-			"*": [
-				"./dist/index.d.ts"
-			]
+			"*": ["./dist/index.d.ts"]
 		}
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@kubb/cli": "^3.10.0",
+		"@kubb/cli": "^3.10.2",
 		"@kubb/core": "^3.10.0",
 		"@kubb/plugin-client": "^3.10.0",
 		"@kubb/plugin-oas": "^3.10.0",
@@ -54,9 +52,7 @@
 		"typescript": "5.6.1-rc",
 		"vitest": "^1.6.0"
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"dependencies": {
 		"cross-fetch": "^4.1.0"
 	}

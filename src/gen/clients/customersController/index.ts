@@ -1,3 +1,3 @@
-export { getCustomers } from "./getCustomers.ts";
-export { getCustomersByAppUserIdByAppUserId } from "./getCustomersByAppUserIdByAppUserId.ts";
-export { postCustomers } from "./postCustomers.ts";
+export { createCustomer } from "./createCustomer.ts";
+export { getCustomerByAppUserId } from "./getCustomerByAppUserId.ts";
+export { listCustomers } from "./listCustomers.ts";

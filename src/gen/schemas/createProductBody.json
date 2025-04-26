@@ -1,0 +1,8 @@
+{
+	"type": "object",
+	"properties": {
+		"name": { "type": "string", "minLength": 3, "maxLength": 32 }
+	},
+	"required": ["name"],
+	"x-readme-ref-name": "CreateProductBody"
+}

@@ -1,4 +1,5 @@
 import { VoidhashSDKError } from "./errors";
+import fetch from "cross-fetch";
 
 export type RequestConfig<TData = unknown> = {
 	url?: string;
